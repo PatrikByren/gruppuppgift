@@ -4,24 +4,17 @@ import './App.css';
 function App() {
 
   const [img, setImg] = useState();
-  const [pokemonData, setPokemonData] = useState(null);
+  const [pokemonList, setPokemonList] = useState([])
+  const [pokemonAttributs, setPokemonAttributs] = useState(null);
   const [aRandomNumber, setARandomNumber] = useState(Math.floor(Math.random() * 52.99 + 1));
-
-
-  //https://assets.tcgdex.net/en/base/basep/53/high.png
+  const [player1Pokemon, setPlayer1Pokemon] = useState([]);
 
 
   const requestOptions = {
     method: 'GET',
     redirect: 'follow'
   };
-  const fetchSelectedPokemon = () => {
-    fetch(`https://pokeapi.co/api/v2/pokemon`, requestOptions)
-      .then(response => response.text())
-      .then(result => setPokemonData(JSON.parse(result)))
-      .catch(error => console.log('error', error));
 
-  }
 
   const fetchImage = async () => {
     const res = await fetch(`https://assets.tcgdex.net/en/base/basep/${aRandomNumber}/high.png`);
@@ -32,7 +25,14 @@ function App() {
   const fetchPokemonAttributs = () => {
     fetch(`https://api.tcgdex.net/v2/en/cards/basep-${aRandomNumber}`, requestOptions)
       .then(response => response.text())
-      .then(result => console.log(JSON.parse(result)))
+      .then(result => setPokemonAttributs(JSON.parse(result)))
+      .catch(error => console.log('error', error));
+
+  }
+  const fetchAllPokemon = () => {
+    fetch(`https://api.tcgdex.net/v2/en/sets/basep`, requestOptions)
+      .then(response => response.text())
+      .then(result => setPokemonList(JSON.parse(result)))
       .catch(error => console.log('error', error));
 
   }
@@ -50,11 +50,11 @@ function App() {
 
 
   useEffect(() => {
-    fetchSelectedPokemon();
+    fetchAllPokemon();
   }, []);
   return (
     <div className="App">
-      <h1>Backend Testing</h1>
+      <h1>POKEMON WORLD</h1>
       <hr />
       <img src={img} alt="icons" />
       <button onClick={randomNumber}>New pic!</button>
