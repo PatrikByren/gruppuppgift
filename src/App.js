@@ -37,21 +37,10 @@ function App() {
 
 
   //FUNCTIONS
-  const randomNumber = () => {
-    setARandomNumber(Math.floor(Math.random() * 52.99 + 1))
-    console.log(aRandomNumber)
-  }
   const addPokemonPlayer1Handler = () => {
     if (pokemonAttributs !== null)
       setPlayer1Pokemon([...player1Pokemon, { id: pokemonAttributs.id, name: pokemonAttributs.name, bild: pokemonImg, hp: pokemonAttributs.hp }]
       )
-    player1Pokemon.map((item) => (
-
-      <li><img src={item.bild} alt={item.name} /> {item.id}, {item.name}, {item.hp}</li>
-
-
-    ))
-
   }
   //USEEFFECTS
   useEffect(() => {
