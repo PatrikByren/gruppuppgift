@@ -42,7 +42,15 @@ function App() {
     console.log(aRandomNumber)
   }
   const addPokemonPlayer1Handler = () => {
-    setPlayer1Pokemon([...player1Pokemon, {}])
+    if (pokemonAttributs !== null)
+      setPlayer1Pokemon([...player1Pokemon, { id: pokemonAttributs.id, name: pokemonAttributs.name, bild: pokemonImg, hp: pokemonAttributs.hp }]
+      )
+    player1Pokemon.map((item) => (
+
+      <li><img src={item.bild} alt={item.name} /> {item.id}, {item.name}, {item.hp}</li>
+
+
+    ))
 
   }
   //USEEFFECTS
@@ -63,14 +71,10 @@ function App() {
       <h1>POKEMON WORLD</h1>
       <hr />
       <Addpoktoplayer
-        pokemonImg={pokemonImg}
-        pokemonAttributs={pokemonAttributs}
+        player1Pokemon={player1Pokemon}
         setARandomNumber={setARandomNumber}
 
       />
-      <img src={pokemonImg} alt="icons" />
-      <button onClick={randomNumber}>New pic!</button>
-
     </div>
   );
 }
