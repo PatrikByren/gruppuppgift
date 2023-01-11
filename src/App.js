@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Addpoktoplayer from './componets/Addpoktoplayer';
 import './App.css';
 
 function App() {
