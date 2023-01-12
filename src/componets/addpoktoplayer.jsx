@@ -1,23 +1,29 @@
 import React from 'react';
 
-const Addpoktoplayer = ({ player1Pokemon, setARandomNumber }) => {
+const Addpoktoplayer = ({ setChoosenPlayer, choosenPlayer, player1Pokemon, player2Pokemon, setARandomNumber }) => {
 
-    const randomNumber = async () => {
-        await setARandomNumber(Math.floor(Math.random() * 52.99 + 1))
+    const randomNumber = async (e) => {
+        await setARandomNumber(Math.floor(Math.random() * 52.99 + 1)
+
+        )
+        console.log(e.target.value)
+        setChoosenPlayer(e.target.value)
 
     }
+
+
     return (
         <div className='playersAndPokemonRoot'>
             <div>
-                <button onClick={randomNumber}>Add a pokemon to Player1</button>
+                <button value={"player1"} onClick={randomNumber}>Add a pokemon to Player1</button>
                 <ul> Player1 pokemons: {player1Pokemon.map((item) => (
 
                     <li key={item.id}><img src={item.bild} alt={item.name} /> {item.id}, {item.name}, {item.hp}</li>))}
                 </ul>
             </div>
             <div>
-                <button onClick={randomNumber}>Add a pokemon to Player2</button>
-                <ul> Player2 pokemons: {player1Pokemon.map((item) => (
+                <button value={"player2"} onClick={randomNumber}>Add a pokemon to Player2</button>
+                <ul> Player2 pokemons: {player2Pokemon.map((item) => (
 
                     <li key={item.id}><img src={item.bild} alt={item.name} /> {item.id}, {item.name}, {item.hp}</li>))}
                 </ul>

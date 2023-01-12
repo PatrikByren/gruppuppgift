@@ -5,10 +5,10 @@ img{
   width: 5rem;
 }
 .playersAndPokemonRoot{
-
   display: flex;
-
-
+}
+li{
+  list-style: none;
 }
 .playersAndPokemonRoot div{
   width: 100%;

@@ -10,6 +10,8 @@ function App() {
   const [pokemonAttributs, setPokemonAttributs] = useState(null);
   const [aRandomNumber, setARandomNumber] = useState(Math.floor(Math.random() * 52.99 + 1));
   const [player1Pokemon, setPlayer1Pokemon] = useState([]);
+  const [player2Pokemon, setPlayer2Pokemon] = useState([]);
+  const [choosenPlayer, setChoosenPlayer] = useState("");
 
   //API FETCH
   const requestOptions = {
@@ -37,10 +39,19 @@ function App() {
 
 
   //FUNCTIONS
-  const addPokemonPlayer1Handler = () => {
+
+  const addPokemonHandler = () => {
     if (pokemonAttributs !== null)
-      setPlayer1Pokemon([...player1Pokemon, { id: pokemonAttributs.id, name: pokemonAttributs.name, bild: pokemonImg, hp: pokemonAttributs.hp }]
-      )
+      switch (choosenPlayer) {
+        case 'player1':
+          setPlayer1Pokemon([...player1Pokemon, { id: pokemonAttributs.id, name: pokemonAttributs.name, bild: pokemonImg, hp: pokemonAttributs.hp }])
+          break;
+        case 'player2':
+          setPlayer2Pokemon([...player2Pokemon, { id: pokemonAttributs.id, name: pokemonAttributs.name, bild: pokemonImg, hp: pokemonAttributs.hp }])
+          break;
+        default:
+          break;
+      }
   }
   //USEEFFECTS
   useEffect(() => {
@@ -48,8 +59,8 @@ function App() {
   }, [aRandomNumber]);
 
   useEffect(() => {
-    addPokemonPlayer1Handler();
-  }, [pokemonImg]);
+    addPokemonHandler();
+  }, [pokemonImg + pokemonAttributs]);
 
 
   useEffect(() => {
@@ -60,9 +71,11 @@ function App() {
       <h1>POKEMON WORLD</h1>
       <hr />
       <Addpoktoplayer
+        choosenPlayer={choosenPlayer}
+        setChoosenPlayer={setChoosenPlayer}
         player1Pokemon={player1Pokemon}
+        player2Pokemon={player2Pokemon}
         setARandomNumber={setARandomNumber}
-
       />
     </div>
   );
