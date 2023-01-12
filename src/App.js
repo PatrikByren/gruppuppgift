@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import Addpoktoplayer from './componets/Addpoktoplayer';
+
 import './App.css';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import Homepage from './pages';
+import Page1 from './pages/Page1';
+import Page2 from './pages/Page2';
+import Page3 from './pages/Page3';
+
+
 
 function App() {
 
@@ -22,14 +29,22 @@ function App() {
     const res = await fetch(`https://assets.tcgdex.net/en/base/basep/${aRandomNumber}/high.png`);
     const imageBlob = await res.blob();
     const imageObjectURL = URL.createObjectURL(imageBlob);
-    setPokemonImg(imageObjectURL);
+    //setPokemonImg(imageObjectURL);
+    return imageObjectURL
   };
-  const fetchPokemonAttributs = () => {
-    fetch(`https://api.tcgdex.net/v2/en/cards/basep-${aRandomNumber}`, requestOptions)
-      .then(response => response.text())
-      .then(result => setPokemonAttributs(JSON.parse(result)))
-      .catch(error => console.log('error', error));
+  const fetchPokemonAttributs = async () => {
+    const response = await fetch(`https://api.tcgdex.net/v2/en/cards/basep-${aRandomNumber}`, requestOptions);
+    const attributeResp = await response.text();
+    //setPokemonAttributs(JSON.parse(attributeResp));
+    return JSON.parse(attributeResp)
   }
+
+
+
+
+
+
+
   const fetchAllPokemon = () => {
     fetch(`https://api.tcgdex.net/v2/en/sets/basep`, requestOptions)
       .then(response => response.text())
@@ -39,6 +54,10 @@ function App() {
 
 
   //FUNCTIONS
+  const waitApi = async () => {
+    let images = await fetchImage();
+    let attributes = await fetchPokemonAttributs();
+  }
 
   const addPokemonHandler = () => {
     if (pokemonAttributs !== null)
@@ -55,7 +74,7 @@ function App() {
   }
   //USEEFFECTS
   useEffect(() => {
-    fetchImage(); fetchPokemonAttributs();
+    waitApi();
   }, [aRandomNumber]);
 
   useEffect(() => {
@@ -67,17 +86,33 @@ function App() {
     fetchAllPokemon();
   }, []);
   return (
-    <div className="App">
-      <h1>POKEMON WORLD</h1>
-      <hr />
-      <Addpoktoplayer
-        choosenPlayer={choosenPlayer}
-        setChoosenPlayer={setChoosenPlayer}
-        player1Pokemon={player1Pokemon}
-        player2Pokemon={player2Pokemon}
-        setARandomNumber={setARandomNumber}
-      />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <header><h1>POKEMON WORLD</h1></header>
+        <nav>
+          <Link to="/">HomePage     </Link>
+          <Link to="/page1">Traniee   </Link>
+          <Link to="/page2">Samla kort   </Link>
+          <Link to="/page3">Duellera</Link>
+        </nav>
+        <main>
+          <Routes>
+            <Route path='/' element={< Homepage />} />
+            <Route
+              path='/page1'
+              element={< Page1 />} />
+            <Route path='/page2' element={< Page2 choosenPlayer={choosenPlayer}
+              setChoosenPlayer={setChoosenPlayer}
+              player1Pokemon={player1Pokemon}
+              player2Pokemon={player2Pokemon}
+              setARandomNumber={setARandomNumber} />} />
+            <Route path='/page3' element={< Page3 />} />
+
+          </Routes>
+        </main>
+        <footer>ALL FOR MAHMOUD</footer>
+      </div>
+    </BrowserRouter>
   );
 }
 

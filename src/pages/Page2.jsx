@@ -1,7 +1,6 @@
 import React from 'react';
 
-const Addpoktoplayer = ({ setChoosenPlayer, player1Pokemon, player2Pokemon, setARandomNumber }) => {
-
+const Page2 = ({ setChoosenPlayer, player1Pokemon, player2Pokemon, setARandomNumber }) => {
     const randomNumber = async (e) => {
         await setARandomNumber(Math.floor(Math.random() * 52.99 + 1)
 
@@ -10,8 +9,6 @@ const Addpoktoplayer = ({ setChoosenPlayer, player1Pokemon, player2Pokemon, setA
         setChoosenPlayer(e.target.value)
 
     }
-
-
     return (
         <div className='playersAndPokemonRoot'>
             <div>
@@ -32,4 +29,4 @@ const Addpoktoplayer = ({ setChoosenPlayer, player1Pokemon, player2Pokemon, setA
     );
 }
 
-export default Addpoktoplayer;
+export default Page2;
