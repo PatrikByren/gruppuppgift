@@ -15,11 +15,13 @@ function App() {
   //USESTATE
   const [pokemonImg, setPokemonImg] = useState();
   const [pokemonList, setPokemonList] = useState([])
+  const [filterPokemonList, setFilterPokemonList] = useState([])
   const [pokemonAttributs, setPokemonAttributs] = useState(null);
   const [fetchNumber, setFetchNumber] = useState(0);
   const [player1Pokemon, setPlayer1Pokemon] = useState([]);
   const [player2Pokemon, setPlayer2Pokemon] = useState([]);
   const [choosenPlayer, setChoosenPlayer] = useState("");
+  const [randomNumber, setRandomNumber] = useState(0);
 
 
   //API FETCH
@@ -51,25 +53,30 @@ function App() {
   const addPokemonHandler = () => {
     if (pokemonAttributs !== null) {
       setPokemonList([...pokemonList, {
+        bild: pokemonImg,
         id: pokemonAttributs.id, attacks: pokemonAttributs.attacks, category: pokemonAttributs.category,
         hp: pokemonAttributs.hp, name: pokemonAttributs.name, rarity: pokemonAttributs.rarity,
         types: pokemonAttributs.types, weaknesses: pokemonAttributs.weaknesses
       }])
 
-      const myTimeout = setTimeout(aNumber, 200);
+      const myTimeout = setTimeout(aNumber, 100);
     }
+  }
 
-    /*switch (choosenPlayer) {
+  const addPokemonToPlayerHandler = () => {
+    switch (choosenPlayer) {
       case 'player1':
-        setPlayer1Pokemon([...player1Pokemon, { id: pokemonAttributs.id, name: pokemonAttributs.name, bild: pokemonImg, hp: pokemonAttributs.hp }])
+        setPlayer1Pokemon([...player1Pokemon, filterPokemonList[randomNumber]])
+        console.log(player1Pokemon)
         break;
       case 'player2':
-        setPlayer2Pokemon([...player2Pokemon, { id: pokemonAttributs.id, name: pokemonAttributs.name, bild: pokemonImg, hp: pokemonAttributs.hp }])
+        setPlayer2Pokemon([...player2Pokemon, {}])
         break;
       default:
         break;
-    }*/
+    }
   }
+
 
   //USEEFFECTS
 
@@ -86,8 +93,9 @@ function App() {
     }
     addPokemonHandler();
   }, [pokemonImg]);
-
-
+  useEffect(() => {
+    addPokemonToPlayerHandler();
+  }, [randomNumber])
   return (
     <BrowserRouter>
       <div className="App">
@@ -104,7 +112,7 @@ function App() {
             <Route
               path='/page1'
               element={< Page1 />} />
-            <Route path='/page2' element={< Page2 choosenPlayer={choosenPlayer}
+            <Route path='/page2' element={< Page2 setRandomNumber={setRandomNumber} filterPokemonList={filterPokemonList} pokemonList={pokemonList} setFilterPokemonList={setFilterPokemonList} choosenPlayer={choosenPlayer}
               setChoosenPlayer={setChoosenPlayer}
               player1Pokemon={player1Pokemon}
               player2Pokemon={player2Pokemon}
