@@ -102,7 +102,7 @@ function App() {
         <header><h1>POKEMON WORLD</h1></header>
         <nav>
           <Link to="/">HomePage     </Link>
-          <Link to="/page1">Traniee   </Link>
+          <Link to="/page1">Trainee   </Link>
           <Link to="/page2">Samla kort   </Link>
           <Link to="/page3">Duellera</Link>
         </nav>
