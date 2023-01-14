@@ -34,8 +34,7 @@ return (
                     </RadioGroup>
             </FormControl>
             <div className='Trainers'>
-                <img src=
-
+            
             </div>
         <Box sx={{ minWidth: 120 }}>
             <FormControl fullWidth>
