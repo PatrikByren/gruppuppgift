@@ -12,6 +12,7 @@ import Page3 from './pages/Page3';
 function App() {
 
   //USESTATE
+  const [age, setAge] = useState('');
   const [pokemonImg, setPokemonImg] = useState();
   const [pokemonList, setPokemonList] = useState([])
   const [pokemonAttributs, setPokemonAttributs] = useState(null);
@@ -100,7 +101,8 @@ function App() {
             <Route path='/' element={< Homepage />} />
             <Route
               path='/page1'
-              element={< Page1 />} />
+              element={< Page1 age={age} setAge={setAge} />} />
+
             <Route path='/page2' element={< Page2 choosenPlayer={choosenPlayer}
               setChoosenPlayer={setChoosenPlayer}
               player1Pokemon={player1Pokemon}
