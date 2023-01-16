@@ -122,17 +122,13 @@ function App() {
             <Route
               path='/page1'
               element={< Page1 age={age} setAge={setAge} />} />
-
-
-            <Route path='/page2' element={< Page2 setRandomNumber={setRandomNumber} filterPokemonList={filterPokemonList}
-              pokemonList={pokemonList} setFilterPokemonList={setFilterPokemonList} choosenPlayer={choosenPlayer}
+            <Route path='/page2' element={< Page2 setRandomNumber={setRandomNumber} filterPokemonList={filterPokemonList} pokemonList={pokemonList} setFilterPokemonList={setFilterPokemonList} choosenPlayer={choosenPlayer}
               setChoosenPlayer={setChoosenPlayer}
               player1Pokemon={player1Pokemon}
               player2Pokemon={player2Pokemon}
               pokemonListLoaded={pokemonListLoaded}
             />} />
             <Route path='/page3' element={< Page3 />} />
-
           </Routes>
         </main>
         <footer>ALL FOR MAHMOUD</footer>
