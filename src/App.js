@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import './App.css';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
@@ -11,87 +11,108 @@ import Page3 from './pages/Page3';
 
 function App() {
 
+  const firstUpdate = useRef(true);
   //USESTATE
+  const [age, setAge] = useState('');
   const [pokemonImg, setPokemonImg] = useState();
   const [pokemonList, setPokemonList] = useState([])
+  const [filterPokemonList, setFilterPokemonList] = useState([])
   const [pokemonAttributs, setPokemonAttributs] = useState(null);
-  const [aRandomNumber, setARandomNumber] = useState(Math.floor(Math.random() * 52.99 + 1));
+  const [fetchNumber, setFetchNumber] = useState(0);
   const [player1Pokemon, setPlayer1Pokemon] = useState([]);
   const [player2Pokemon, setPlayer2Pokemon] = useState([]);
   const [choosenPlayer, setChoosenPlayer] = useState("");
+  const [randomNumber, setRandomNumber] = useState(0);
+  const [pokemonListLoaded, setPokemonListLoaded] = useState("Pokemons are loading... Please wait!")
 
   //API FETCH
   const requestOptions = {
     method: 'GET',
     redirect: 'follow'
   };
+
   const fetchImage = async () => {
-    const res = await fetch(`https://assets.tcgdex.net/en/base/basep/${aRandomNumber}/high.png`);
+    const res = await fetch(`https://assets.tcgdex.net/en/base/basep/${fetchNumber}/high.png`);
     const imageBlob = await res.blob();
     const imageObjectURL = URL.createObjectURL(imageBlob);
-    //setPokemonImg(imageObjectURL);
-    return imageObjectURL
+    setPokemonImg([imageObjectURL]);
   };
-  const fetchPokemonAttributs = async () => {
-    const response = await fetch(`https://api.tcgdex.net/v2/en/cards/basep-${aRandomNumber}`, requestOptions);
-    const attributeResp = await response.text();
-    //setPokemonAttributs(JSON.parse(attributeResp));
-    return JSON.parse(attributeResp)
-  }
-
-
-
-
-
-
-
-  const fetchAllPokemon = () => {
-    fetch(`https://api.tcgdex.net/v2/en/sets/basep`, requestOptions)
+  const fetchPokemonAttributs = () => {
+    fetch(`https://api.tcgdex.net/v2/en/cards/basep-${fetchNumber}`, requestOptions)
       .then(response => response.text())
-      .then(result => setPokemonList(JSON.parse(result)))
+      .then(result => setPokemonAttributs(JSON.parse(result)))
       .catch(error => console.log('error', error));
   }
 
-
   //FUNCTIONS
-  const waitApi = async () => {
-    let images = await fetchImage();
-    let attributes = await fetchPokemonAttributs();
+  const aNumber = () => {
+    if (fetchNumber < 53) {
+      setFetchNumber(fetchNumber + 1)
+    }
+    else {
+      setFilterPokemonList(pokemonList.filter((item) => !item.category.indexOf("Pokemon")))
+      setPokemonListLoaded("All pokemons succefully loaded!");
+      setTimeout(function () {
+        setPokemonListLoaded("")
+      }, 5000);
+
+    }
   }
 
   const addPokemonHandler = () => {
-    if (pokemonAttributs !== null)
-      switch (choosenPlayer) {
-        case 'player1':
-          setPlayer1Pokemon([...player1Pokemon, { id: pokemonAttributs.id, name: pokemonAttributs.name, bild: pokemonImg, hp: pokemonAttributs.hp }])
-          break;
-        case 'player2':
-          setPlayer2Pokemon([...player2Pokemon, { id: pokemonAttributs.id, name: pokemonAttributs.name, bild: pokemonImg, hp: pokemonAttributs.hp }])
-          break;
-        default:
-          break;
-      }
+
+    if (pokemonAttributs !== null) {
+      setPokemonList([...pokemonList, {
+        bild: pokemonImg,
+        id: pokemonAttributs.id, attacks: pokemonAttributs.attacks, category: pokemonAttributs.category,
+        hp: pokemonAttributs.hp, name: pokemonAttributs.name, rarity: pokemonAttributs.rarity,
+        types: pokemonAttributs.types, weaknesses: pokemonAttributs.weaknesses
+      }])
+      setTimeout(aNumber, 100);
+      //const myTimeout = setTimeout(aNumber, 100);
+    }
   }
+
+  const addPokemonToPlayerHandler = () => {
+    switch (choosenPlayer) {
+      case 'player1':
+        setPlayer1Pokemon([...player1Pokemon, filterPokemonList[randomNumber]])
+        console.log(player1Pokemon)
+        break;
+      case 'player2':
+        setPlayer2Pokemon([...player2Pokemon, filterPokemonList[randomNumber]])
+        break;
+      default: console.log(choosenPlayer)
+        break;
+    }
+  }
+
+
   //USEEFFECTS
-  useEffect(() => {
-    waitApi();
-  }, [aRandomNumber]);
+
 
   useEffect(() => {
+    if (fetchNumber != 0) { fetchPokemonAttributs(); fetchImage(); }
+    else { setFetchNumber(fetchNumber + 1) }
+  }, [fetchNumber]);
+
+  useEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
     addPokemonHandler();
-  }, [pokemonImg + pokemonAttributs]);
-
-
+  }, [pokemonImg]);
   useEffect(() => {
-    fetchAllPokemon();
-  }, []);
+    addPokemonToPlayerHandler();
+  }, [randomNumber])
   return (
     <BrowserRouter>
       <div className="App">
         <header><h1>POKEMON WORLD</h1></header>
         <nav>
           <Link to="/">HomePage     </Link>
-          <Link to="/page1">Traniee   </Link>
+          <Link to="/page1">Trainee   </Link>
           <Link to="/page2">Samla kort   </Link>
           <Link to="/page3">Duellera</Link>
         </nav>
@@ -100,14 +121,14 @@ function App() {
             <Route path='/' element={< Homepage />} />
             <Route
               path='/page1'
-              element={< Page1 />} />
-            <Route path='/page2' element={< Page2 choosenPlayer={choosenPlayer}
+              element={< Page1 age={age} setAge={setAge} />} />
+            <Route path='/page2' element={< Page2 setRandomNumber={setRandomNumber} filterPokemonList={filterPokemonList} pokemonList={pokemonList} setFilterPokemonList={setFilterPokemonList} choosenPlayer={choosenPlayer}
               setChoosenPlayer={setChoosenPlayer}
               player1Pokemon={player1Pokemon}
               player2Pokemon={player2Pokemon}
-              setARandomNumber={setARandomNumber} />} />
+              pokemonListLoaded={pokemonListLoaded}
+            />} />
             <Route path='/page3' element={< Page3 />} />
-
           </Routes>
         </main>
         <footer>  
@@ -141,3 +162,32 @@ function App() {
 }
 
 export default App;
+
+
+/*const fetchImage = async (number) => {
+  const res = await fetch(`https://assets.tcgdex.net/en/base/basep/${number}/high.png`);
+  const imageBlob = await res.blob();
+  const imageObjectURL = URL.createObjectURL(imageBlob);
+  //setPokemonImg(imageObjectURL);
+  return imageObjectURL
+};
+const fetchPokemonAttributs = async (number) => {
+  const response = await fetch(`https://api.tcgdex.net/v2/en/cards/basep-${number}`, requestOptions);
+  const attributeResp = await response.text();
+  //setPokemonAttributs(JSON.parse(attributeResp));
+  return JSON.parse(attributeResp)
+}*/
+/*const fetchAllPokemon = () => {
+fetch(`https://api.tcgdex.net/v2/en/sets/basep`, requestOptions)
+  .then(response => response.text())
+  .then(result => setPokemonList(JSON.parse(result)))
+  .catch(error => console.log('error', error));
+}*/
+/*const waitApi = async () => {
+let images = await fetchImage(fetchNumber);
+let attributs = await fetchPokemonAttributs(fetchNumber);
+
+//setPokemonList([...pokemonList, { picture: images, attacks: attributs.attacks, category: attributs.category, hp: attributs.hp, name: attributs.name, rarity: attributs.rarity, types: attributs.types, weaknesses: attributs.weaknesses }])
+//console.log(pokemonList.picture)
+//console.log(pokemonImg)
+*/
