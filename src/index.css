@@ -11,3 +11,56 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+main {
+  text-align: center;
+  background-image: url(https://www.desktopbackground.org/download/1680x1050/2010/07/14/48144_awesome-pokemon-backgrounds_2560x1600_h.jpg);
+  min-width: 100%;
+  max-width: 100%;
+  background-position: center;
+}
+
+.border{
+  background-image: url(https://fr.readkong.com/static/f2/f5/f2f52481f060d2b87f3f090d448a1ad7/betail-viande-poisson-8376609-2.jpg);
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 35%;
+  min-height: 600px;
+  text-align: center;
+  margin: 40px auto;
+  border-radius: 10px;
+  padding-bottom: 32px;
+}
+
+.picplayer{
+  margin-top: 20px;
+  justify-content: space-around;
+}
+
+.ageplayer{
+  margin-left: 170px;
+  width: 200px;
+  padding-top: 40px;
+}
+
+.mradio{
+  padding-left: 80px;
+}
+
+.createbtn{
+  position: relative;
+  margin-top: 20%;
+}
+
+.mpic{
+  height: 250px;
+  width: 130px;
+  margin-left: 40px;
+}
+
+.fpic{
+  height: 250px;
+  width: 130px;
+}
