@@ -110,8 +110,32 @@ function App() {
 
           </Routes>
         </main>
-        <footer>ALL FOR MAHMOUD</footer>
-      </div>
+        <footer>  
+        <div class="footer-container">
+             <nav class="footer-nav">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </nav>
+    </div>
+    </footer>
+       
+    <div class="footer-back-to-top">
+      
+      <a href="#top">Back to top</a>
+
+    </div>
+
+       <div class="footer-copyright">
+
+      <p>Copyright ©2022 Your Website</p>
+    </div>
+  </div>
+    
+      
     </BrowserRouter>
   );
 }

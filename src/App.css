@@ -17,8 +17,14 @@
 }
 .App footer{
   background-color: azure;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
 
 }
+
+
 img{
   width: 5rem;
 }
@@ -33,3 +39,76 @@ li{
 }
 
 
+
+
+Copy code
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+
+.footer-nav ul li a {
+  background-color: azure;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  margin-right: 0rem;
+}
+
+.footer-copyright {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  margin-right: 0rem;
+}
+
+
+.footer-back-to-top {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  margin-right: 0rem;
+}
+.footer-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.footer-nav ul li {
+  margin-right: 1rem;
+}
+
+.footer-nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+}
+
+.footer-nav ul li a:hover {
+  color: #333;
+  background-color: #fff;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
