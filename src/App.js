@@ -23,7 +23,7 @@ function App() {
   const [player2Pokemon, setPlayer2Pokemon] = useState([]);
   const [choosenPlayer, setChoosenPlayer] = useState("");
   const [randomNumber, setRandomNumber] = useState(0);
-
+  const [pokemonListLoaded, setPokemonListLoaded] = useState("Pokemons are loading... Please wait!")
 
   //API FETCH
   const requestOptions = {
@@ -49,9 +49,18 @@ function App() {
     if (fetchNumber < 53) {
       setFetchNumber(fetchNumber + 1)
     }
+    else {
+      setFilterPokemonList(pokemonList.filter((item) => !item.category.indexOf("Pokemon")))
+      setPokemonListLoaded("All pokemons succefully loaded!");
+      setTimeout(function () {
+        setPokemonListLoaded("")
+      }, 5000);
+
+    }
   }
 
   const addPokemonHandler = () => {
+
     if (pokemonAttributs !== null) {
       setPokemonList([...pokemonList, {
         bild: pokemonImg,
@@ -59,8 +68,8 @@ function App() {
         hp: pokemonAttributs.hp, name: pokemonAttributs.name, rarity: pokemonAttributs.rarity,
         types: pokemonAttributs.types, weaknesses: pokemonAttributs.weaknesses
       }])
-
-      const myTimeout = setTimeout(aNumber, 100);
+      setTimeout(aNumber, 100);
+      //const myTimeout = setTimeout(aNumber, 100);
     }
   }
 
@@ -71,9 +80,9 @@ function App() {
         console.log(player1Pokemon)
         break;
       case 'player2':
-        setPlayer2Pokemon([...player2Pokemon, {}])
+        setPlayer2Pokemon([...player2Pokemon, filterPokemonList[randomNumber]])
         break;
-      default:
+      default: console.log(choosenPlayer)
         break;
     }
   }
@@ -117,6 +126,7 @@ function App() {
               setChoosenPlayer={setChoosenPlayer}
               player1Pokemon={player1Pokemon}
               player2Pokemon={player2Pokemon}
+              pokemonListLoaded={pokemonListLoaded}
             />} />
             <Route path='/page3' element={< Page3 />} />
           </Routes>
