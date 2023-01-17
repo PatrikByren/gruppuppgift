@@ -78,6 +78,10 @@ function App() {
     }
   }
 
+  const resetPokemonList = () => {
+    setPlayer1PokemonFilter([...player1Pokemon])
+    setPlayer2PokemonFilter([...player2Pokemon])
+  }
   const addPokemonToPlayerHandler = () => {
     switch (choosenPlayer) {
       case 'player1':
@@ -120,7 +124,7 @@ function App() {
           <Link to="/">HomePage     </Link>
           <Link to="/page1">Trainee   </Link>
           <Link to="/page2">Samla kort   </Link>
-          <Link to="/page3">Duellera</Link>
+          <Link to="/page3" onClick={resetPokemonList} >Duellera</Link>
         </nav>
         <main>
           <Routes>
