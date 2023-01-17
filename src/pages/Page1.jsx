@@ -24,7 +24,7 @@ setAge(event.target.value);
     
 return (
       
-        <main>
+        <body className='border'>
             <div className='createplayer'>
                 <div className='nameplayer'>
                     <Box sx={{ '& > :not(style)': { m: 3 } }}>
@@ -49,14 +49,14 @@ return (
                             aria-labelledby="row-radio-buttons-group-label"
                             name="row-radio-buttons-group"
                             >
-                            <FormControlLabel value="female" control={<Radio />} label="Female" />
-                            <FormControlLabel value="male" control={<Radio />} label="Male" />
+                            <FormControlLabel className='fradio' value="female" control={<Radio />} label="Female" />
+                            <FormControlLabel className='mradio' value="male" control={<Radio />} label="Male" />
                         </RadioGroup>
                     </FormControl>
                 </div>
                 <div className='picplayer'>
-                    <img src="./images/femaleprofile.jpg" alt=""/>
-                    <img src="./images/maleprofile.jpg" alt=""/>                
+                    <img className='fpic' src="./images/femaleprofile.jpg" alt=""/>
+                    <img className='mpic' src="./images/maleprofile.jpg" alt=""/>                
                 </div>
                 <div className='ageplayer'>
                     <Box sx={{ minWidth: 120 }}>
@@ -75,10 +75,12 @@ return (
                             </Select>
                         </FormControl>
                     </Box>
-                    <Button value={"traine"} variant="contained">CREATE A PLAYER</Button>
+                 <div className='createbtn'>
+                    <Button value={"traine"} variant="contained" startIcon={<CatchingPokemonIcon />}>CREATE A PLAYER</Button>
+                 </div>
                 </div>
             </div>
-        </main>  
+        </body>  
     );
 }
 

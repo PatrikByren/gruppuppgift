@@ -3,8 +3,12 @@ import React from 'react';
 const Homepage = () => {
     return (
         <div>
-            HALLLÅ
+            <h1>WELCOME</h1>
         </div>
+        
+            
+            
+        
     );
 }
 
