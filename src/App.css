@@ -64,4 +64,13 @@ footer a {
   color: white;
   margin-right: 10px;
 }
+.pokemonField1{
+  opacity: 50%;
+  background-color: aliceblue;
+  margin: 2rem
+}
+.pokemonField{
+  background-color: aliceblue;
+  margin: 2rem
+}
 

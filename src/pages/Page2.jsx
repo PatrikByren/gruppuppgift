@@ -1,6 +1,7 @@
 
 import React from 'react';
 
+
 const page2 = ({ pokemonListLoaded, setRandomNumber, filterPokemonList, setFilterPokemonList, pokemonList, setChoosenPlayer, player1Pokemon, player2Pokemon, }) => {
 
     const randomNumber = (e) => {
@@ -11,20 +12,20 @@ const page2 = ({ pokemonListLoaded, setRandomNumber, filterPokemonList, setFilte
     return (
         <div> <label>{pokemonListLoaded}</label>
             <div className='playersAndPokemonRoot'>
-                <div>
+                <div >
                     <button value={"player1"} onClick={randomNumber}>Add a pokemon to Player1</button>
-                    <ul> Player1 pokemons: {player1Pokemon.map((item) => (
+                    <ul className='pokemonField1'> Player1 pokemons: {player1Pokemon.map((item) => (
 
-                        <li key={item.id}><img src={item.bild} alt={item.name} />{item.id}, "Namn: " {item.name},"Hp: " {item.hp},
-                            "Attacks" {item.attacks[0].name}", "{item.attacks[0].effect}" damage: "{item.attacks[0].damage}</li>))}
+                        <li className='pokemonField' key={item.id}><img src={item.bild} alt={item.name} />{item.id}, "Namn: " {item.name},"Hp: " {item.hp},
+                            "Attacks" {item.attacks[0].name}", "" damage: "{item.attacks[0].damage}</li>))}
                     </ul>
                 </div>
-                <div>
+                <div >
                     <button value={"player2"} onClick={randomNumber}>Add a pokemon to Player2</button>
-                    <ul> Player2 pokemons: {player2Pokemon.map((item) => (
+                    <ul className='pokemonField1'> Player2 pokemons: {player2Pokemon.map((item) => (
 
-                        <li key={item.id}><img src={item.bild} alt={item.name} />{item.id}, "Namn: " {item.name},"Hp: " {item.hp},
-                            "Attacks" {item.attacks[0].name}", "{item.attacks[0].effect}" damage: "{item.attacks[0].damage}</li>))}
+                        <li className='pokemonField' key={item.id}><img src={item.bild} alt={item.name} />{item.id}, "Namn: " {item.name},"Hp: " {item.hp},
+                            "Attacks" {item.attacks[0].name}", "" damage: "{item.attacks[0].damage}</li>))}
                     </ul>
                 </div>
             </div>
