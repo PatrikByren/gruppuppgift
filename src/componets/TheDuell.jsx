@@ -9,7 +9,8 @@ const TheDuell = ({ setPlayer1PokemonFilter, setPlayer2PokemonFilter, player1Pok
         setDuellPokemon1(player1PokemonFilter.filter((item) => !item.id.indexOf(player1ChoosenPok)));
         setDuellPokemon2(player2PokemonFilter.filter((item) => !item.id.indexOf(player2ChoosenPok)));
         let i = duellPokemon1.map((item) => (item.hp));
-
+        setPlayer1PokemonFilter([])
+        setPlayer2PokemonFilter([])
         do {
 
             console.log(i)

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -16,14 +16,33 @@ import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
 
 
 
-const page1 = ({age, setAge}) => {
+const Page1 = ({ playerProfile, setPlayerProfile }) => {
+    //useState
+    const [name, setName] = useState('');
+    const [gender, setGender] = useState('female');
+    const [age, setAge] = useState('');
 
-const handleChange = (event) => {
-setAge(event.target.value);
-};
-    
-return (
-      
+    //Eventhandlers
+    const nameInputHandler = (e) => {
+        setName(e.target.value)
+        console.log(e.target.value)
+    }
+    const ganderHandler = (e) => {
+        setGender(e.target.value)
+        console.log(e.target.value)
+    }
+    const handleChange = (event) => {
+        setAge(event.target.value);
+        console.log(event.target.value)
+    };
+
+    const createPlayerHandler = () => {
+        setPlayerProfile([...playerProfile, { name: name, gender: gender, age: age }]) //Skapa player
+        setName("") // Återställa fältet
+
+    }
+    return (
+
         <body className='border'>
             <div className='createplayer'>
                 <div className='nameplayer'>
@@ -31,6 +50,8 @@ return (
                         <TextField
                             id="input-with-icon-textfield"
                             label="PLAYER NAME"
+                            value={name}
+                            onChange={nameInputHandler}
                             InputProps={{
                                 startAdornment: (
                                     <InputAdornment position="start">
@@ -44,45 +65,45 @@ return (
                 </div>
                 <div className='genderplayer'>
                     <FormControl>
-                        <RadioGroup
+                        <RadioGroup onChange={ganderHandler}
                             row
                             aria-labelledby="row-radio-buttons-group-label"
                             name="row-radio-buttons-group"
-                            >
-                            <FormControlLabel className='fradio' value="female" control={<Radio />} label="Female" />
+                        >
+                            <FormControlLabel className='fradio' defaultChecked="true" value="female" control={<Radio />} label="Female" />
                             <FormControlLabel className='mradio' value="male" control={<Radio />} label="Male" />
                         </RadioGroup>
                     </FormControl>
                 </div>
                 <div className='picplayer'>
-                    <img className='fpic' src="./images/femaleprofile.jpg" alt=""/>
-                    <img className='mpic' src="./images/maleprofile.jpg" alt=""/>                
+                    <img className='fpic' src="./images/femaleprofile.jpg" alt="" />
+                    <img className='mpic' src="./images/maleprofile.jpg" alt="" />
                 </div>
                 <div className='ageplayer'>
                     <Box sx={{ minWidth: 120 }}>
                         <FormControl fullWidth>
                             <InputLabel id="simple-select-label">Age</InputLabel>
                             <Select
-                            labelId="simple-select-label"
-                            id="simple-select"
-                            value={age}
-                            label="Age"
-                            onChange={handleChange}
+                                labelId="simple-select-label"
+                                id="simple-select"
+                                value={age}
+                                label="Age"
+                                onChange={handleChange}
                             >
-                            <MenuItem value={10}>0-17</MenuItem>
-                            <MenuItem value={20}>18-30</MenuItem>
-                            <MenuItem value={30}>31+</MenuItem>
+                                <MenuItem value={10}>0-17</MenuItem>
+                                <MenuItem value={20}>18-30</MenuItem>
+                                <MenuItem value={30}>31+</MenuItem>
                             </Select>
                         </FormControl>
                     </Box>
-                 <div className='createbtn'>
-                    <Button value={"traine"} variant="contained" startIcon={<CatchingPokemonIcon />}>CREATE A PLAYER</Button>
-                 </div>
+                    <div className='createbtn'>
+                        <Button value={"traine"} variant="contained" onClick={createPlayerHandler} startIcon={<CatchingPokemonIcon />}>CREATE A PLAYER</Button>
+                    </div>
                 </div>
             </div>
-        </body>  
+        </body>
     );
 }
 
-export default page1;
+export default Page1;
 

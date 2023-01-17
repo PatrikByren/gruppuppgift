@@ -14,7 +14,7 @@ function App() {
 
   const firstUpdate = useRef(true);
   //USESTATE
-  const [age, setAge] = useState('');
+  const [playerProfile, setPlayerProfile] = useState([]);
   const [pokemonImg, setPokemonImg] = useState();
   const [pokemonList, setPokemonList] = useState([])
   const [filterPokemonList, setFilterPokemonList] = useState([])
@@ -83,7 +83,6 @@ function App() {
       case 'player1':
         setPlayer1Pokemon([...player1Pokemon, filterPokemonList[randomNumber]])
         setPlayer1PokemonFilter([...player1PokemonFilter, filterPokemonList[randomNumber]])
-
         break;
       case 'player2':
         setPlayer2Pokemon([...player2Pokemon, filterPokemonList[randomNumber]])
@@ -128,7 +127,7 @@ function App() {
             <Route path='/' element={< Homepage />} />
             <Route
               path='/page1'
-              element={< Page1 age={age} setAge={setAge} />} />
+              element={< Page1 playerProfile={playerProfile} setPlayerProfile={setPlayerProfile} />} />
             <Route path='/page2' element={< Page2 setRandomNumber={setRandomNumber} filterPokemonList={filterPokemonList}
               pokemonList={pokemonList} setFilterPokemonList={setFilterPokemonList} choosenPlayer={choosenPlayer}
               setChoosenPlayer={setChoosenPlayer}
@@ -142,35 +141,35 @@ function App() {
           </Routes>
         </main>
         <footer class="bg-primary text-white">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <h4>Contact Us</h4>
-        <p>123 Main Street</p>
-        <p>Stockholm, Sweden</p>
-        <p>555-555-5555</p>
-        <p>pokemon@example.com</p>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                <h4>Contact Us</h4>
+                <p>123 Main Street</p>
+                <p>Stockholm, Sweden</p>
+                <p>555-555-5555</p>
+                <p>pokemon@example.com</p>
+              </div>
+              <div class="col-md-4">
+                <h4>Follow Us</h4>
+                <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+                <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+              </div>
+              <div class="col-md-4">
+                <h4>About Us</h4>
+                <p>We are a team of Pokémon the <strong> Awesome Bandits </strong> enthusiasts dedicated to bringing you the latest news, information, and resources about your favorite Pokémon.</p>
+              </div>
+            </div>
+            <div class="text-center">
+              <p>&copy; 2020 Pokémon</p>
+            </div>
+          </div>
+        </footer>
+
       </div>
-      <div class="col-md-4">
-        <h4>Follow Us</h4>
-        <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
-        <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
-        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
-      </div>
-      <div class="col-md-4">
-        <h4>About Us</h4>
-        <p>We are a team of Pokémon the <strong> Awesome Bandits </strong> enthusiasts dedicated to bringing you the latest news, information, and resources about your favorite Pokémon.</p>
-      </div>
-    </div>
-    <div class="text-center">
-      <p>&copy; 2020 Pokémon</p>
-    </div>
-  </div>
-</footer>
-    
-  </div>
-    
-      
+
+
     </BrowserRouter>
   );
 }
