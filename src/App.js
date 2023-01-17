@@ -6,6 +6,7 @@ import Homepage from './pages';
 import Page1 from './pages/Page1';
 import Page2 from './pages/Page2';
 import Page3 from './pages/Page3';
+import { ListItemSecondaryAction } from '@mui/material';
 
 
 
@@ -22,7 +23,11 @@ function App() {
   const [player1Pokemon, setPlayer1Pokemon] = useState([]);
   const [player2Pokemon, setPlayer2Pokemon] = useState([]);
   const [choosenPlayer, setChoosenPlayer] = useState("");
+  const [player1PokemonFilter, setPlayer1PokemonFilter] = useState([]);
+  const [player2PokemonFilter, setPlayer2PokemonFilter] = useState([]);
+
   const [randomNumber, setRandomNumber] = useState(0);
+
   const [pokemonListLoaded, setPokemonListLoaded] = useState("Pokemons are loading... Please wait!")
 
   //API FETCH
@@ -77,10 +82,12 @@ function App() {
     switch (choosenPlayer) {
       case 'player1':
         setPlayer1Pokemon([...player1Pokemon, filterPokemonList[randomNumber]])
-        console.log(player1Pokemon)
+        setPlayer1PokemonFilter([...player1PokemonFilter, filterPokemonList[randomNumber]])
+
         break;
       case 'player2':
         setPlayer2Pokemon([...player2Pokemon, filterPokemonList[randomNumber]])
+        setPlayer2PokemonFilter([...player2PokemonFilter, filterPokemonList[randomNumber]])
         break;
       default: console.log(choosenPlayer)
         break;
@@ -122,13 +129,16 @@ function App() {
             <Route
               path='/page1'
               element={< Page1 age={age} setAge={setAge} />} />
-            <Route path='/page2' element={< Page2 setRandomNumber={setRandomNumber} filterPokemonList={filterPokemonList} pokemonList={pokemonList} setFilterPokemonList={setFilterPokemonList} choosenPlayer={choosenPlayer}
+            <Route path='/page2' element={< Page2 setRandomNumber={setRandomNumber} filterPokemonList={filterPokemonList}
+              pokemonList={pokemonList} setFilterPokemonList={setFilterPokemonList} choosenPlayer={choosenPlayer}
               setChoosenPlayer={setChoosenPlayer}
               player1Pokemon={player1Pokemon}
               player2Pokemon={player2Pokemon}
               pokemonListLoaded={pokemonListLoaded}
             />} />
-            <Route path='/page3' element={< Page3 />} />
+            <Route path='/page3' element={< Page3 player1Pokemon={player1Pokemon} player2Pokemon={player2Pokemon}
+              player1PokemonFilter={player1PokemonFilter} player2PokemonFilter={player2PokemonFilter}
+              setPlayer1PokemonFilter={setPlayer1PokemonFilter} setPlayer2PokemonFilter={setPlayer2PokemonFilter} />} />
           </Routes>
         </main>
         <footer>ALL FOR MAHMOUD</footer>

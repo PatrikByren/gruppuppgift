@@ -4,12 +4,8 @@ import React from 'react';
 const page2 = ({ pokemonListLoaded, setRandomNumber, filterPokemonList, setFilterPokemonList, pokemonList, setChoosenPlayer, player1Pokemon, player2Pokemon, }) => {
 
     const randomNumber = (e) => {
-
-        console.log(pokemonList)
         //setFilterPokemonList(pokemonList.filter((item) => !item.category.indexOf("Pokemon")))
-        console.log(filterPokemonList)
         setRandomNumber(Math.floor(Math.random() * filterPokemonList.length))
-        console.log(e.target.value)
         setChoosenPlayer(e.target.value)
     }
     return (

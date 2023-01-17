@@ -31,5 +31,8 @@ li{
 .playersAndPokemonRoot div{
   width: 100%;
 }
+.listBtnItems{
+display: flex;
+}
 
 
