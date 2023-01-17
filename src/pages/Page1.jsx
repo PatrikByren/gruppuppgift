@@ -35,7 +35,7 @@ const Page1 = ({ playerProfile, setPlayerProfile }) => {
         setAge(event.target.value);
         console.log(event.target.value)
     };
-
+    //When click the button create profile: 
     const createPlayerHandler = () => {
         setPlayerProfile([...playerProfile, { name: name, gender: gender, age: age }]) //Skapa player
         setName("") // Återställa fältet
