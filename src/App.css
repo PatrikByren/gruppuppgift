@@ -1,13 +1,15 @@
+*{
+  color: #fff;
+}
 .App {
   text-align: center;
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100vh;
+  background-image: url(https://www.desktopbackground.org/download/1680x1050/2010/07/14/48144_awesome-pokemon-backgrounds_2560x1600_h.jpg);
 }
-.App header{
-  background-color: lavender;
-}
+
 .App nav{
  list-style-type: none;
  margin: 0;
@@ -17,6 +19,7 @@
  background-color: #333;
  display: flex;
  justify-content: space-evenly;
+ flex: 10%;
 }
 .App nav a{
   display: block;
@@ -30,63 +33,145 @@
 }
 .App main{
   height: 100vh;
-  background-color: bisque;
-}
-.App footer{
-  background-color: azure;
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
+  flex-grow: 50%;
 
 }
 
+.App header {
+  flex-grow: 20%;
+}
 
 img{
   width: 5rem;
 }
 .playersAndPokemonRoot{
+  
   display: flex;
 }
 li{
   list-style: none;
+  
+}
+li div {
+  color: #111;
 }
 .playersAndPokemonRoot div{
   width: 100%;
+  
 }
 .listBtnItems{
 display: flex;
 }
 
-
-
-
-
-footer {
-  background-color: #333;
-  color: #fff;
-  padding: 1rem;
+.pokemonField1{
+  opacity: 95%;
+  flex-direction: row;
+  margin: 2rem
+}
+.pokemonField{
+  display: flex;
+  flex-direction: rows;
+  background-color: aliceblue;
+  margin: 2rem;
+}
+.pokemonField div{
+  text-align: left;
+  margin-left: 2rem;
 }
 
-footer {
-  padding: 50px 0;
-}
 
-footer h4 {
+/* _----- footers */
+
+
+
+
+
+/*footer h4 {
   margin-bottom: 20px;
-}
+}*/
 
 footer a {
   color: white;
   margin-right: 10px;
 }
-.pokemonField1{
+.App footer{
+
+  background-color: #333;
   opacity: 50%;
-  background-color: aliceblue;
-  margin: 2rem
-}
-.pokemonField{
-  background-color: aliceblue;
-  margin: 2rem
+  color: #fff;
+  flex: 20%;
+  display: flex;
+flex-direction: column;
 }
 
+
+
+
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+main {
+  text-align: center;
+  /*background-image: url(https://www.desktopbackground.org/download/1680x1050/2010/07/14/48144_awesome-pokemon-backgrounds_2560x1600_h.jpg);*/
+  min-width: 100%;
+  max-width: 100%;
+  background-position: center;
+}
+
+.border{
+  background-image: url(https://fr.readkong.com/static/f2/f5/f2f52481f060d2b87f3f090d448a1ad7/betail-viande-poisson-8376609-2.jpg);
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  
+  width: 35%;
+  min-height: 600px;
+  text-align: center;
+  margin: 40px auto;
+  border-radius: 10px;
+  padding-bottom: 32px;
+}
+
+.picplayer{
+  margin-top: 20px;
+  justify-content: space-around;
+}
+
+.ageplayer{
+  margin-left: 170px;
+  width: 200px;
+  padding-top: 40px;
+}
+
+.mradio{
+  padding-left: 80px;
+}
+
+.createbtn{
+  position: relative;
+  margin-top: 20%;
+}
+
+.mpic{
+  height: 250px;
+  width: 130px;
+  margin-left: 40px;
+}
+
+.fpic{
+  height: 250px;
+  width: 130px;
+}

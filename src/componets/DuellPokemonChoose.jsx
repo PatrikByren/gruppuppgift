@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '@mui/material/Button';
 
 const DuellPokemonChoose = ({ setPlayer1ChoosenPok, setPlayer2ChoosenPok, player1PokemonFilter, player2PokemonFilter }) => {
 
@@ -23,18 +24,20 @@ const DuellPokemonChoose = ({ setPlayer1ChoosenPok, setPlayer2ChoosenPok, player
         <div className='playersAndPokemonRoot'>
             <div>
 
-                <ul> Player1 pokemons: {player1PokemonFilter.map((item) => (
+                <ul className='pokemonField1'> Player1 pokemons: {player1PokemonFilter.map((item) => (
 
-                    <div key={item.id} className='listBtnItems'><img src={item.bild} alt={item.name} /> <div>{item.id}<li> "Namn: " {item.name}, </li><li>"Hp: " {item.hp},
-                    </li><li>"Attacks" {item.attacks[0].name}", "{item.attacks[0].effect}" </li><li>damage: "{item.attacks[0].damage}</li><button value={item.id} onClick={player1PokemonHandler}>THIS ONE</button></div></div>))}
+                    <div key={item.id} className='pokemonField1'><div><li className='pokemonField' key={item.id}><img src={item.bild} alt={item.name} /> <div><div> Namn: {item.name} </div><div>Hp: {item.hp}</div><div>
+                        Attacks: {item.attacks[0].name}</div><div>damage: {item.attacks[0].damage}</div></div>
+                        <Button variant="contained" value={item.id} onClick={player1PokemonHandler}>THIS ONE</Button></li></div></div>))}
                 </ul>
             </div>
             <div>
 
-                <ul> Player2 pokemons: {player2PokemonFilter.map((item) => (
+                <ul className='pokemonField1'> Player2 pokemons: {player2PokemonFilter.map((item) => (
 
-                    <div key={item.id} className='listBtnItems'><img src={item.bild} alt={item.name} /> <div>{item.id}<li> "Namn: " {item.name}, </li><li>"Hp: " {item.hp},
-                    </li><li>"Attacks" {item.attacks[0].name}", "{item.attacks[0].effect}" </li><li>damage: "{item.attacks[0].damage}</li><button value={item.id} onClick={player2PokemonHandler}>THIS ONE</button></div></div>))}
+                    <div key={item.id} className='pokemonField1'><div><li className='pokemonField' key={item.id}><img src={item.bild} alt={item.name} /> <div><div> Namn: {item.name} </div><div>Hp: {item.hp}</div><div>
+                        Attacks: {item.attacks[0].name}</div><div>damage: {item.attacks[0].damage}</div></div>
+                        <Button variant="contained" value={item.id} onClick={player2PokemonHandler}>THIS ONE</Button></li></div></div>))}
                 </ul>
             </div>
 

@@ -1,5 +1,7 @@
 
 import React from 'react';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 
 const page2 = ({ pokemonListLoaded, setRandomNumber, filterPokemonList, setFilterPokemonList, pokemonList, setChoosenPlayer, player1Pokemon, player2Pokemon, }) => {
@@ -10,26 +12,27 @@ const page2 = ({ pokemonListLoaded, setRandomNumber, filterPokemonList, setFilte
         setChoosenPlayer(e.target.value)
     }
     return (
-        <div> <label>{pokemonListLoaded}</label>
+        <div>
             <div className='playersAndPokemonRoot'>
                 <div >
-                    <button value={"player1"} onClick={randomNumber}>Add a pokemon to Player1</button>
+                    <Button variant="contained" value={"player1"} onClick={randomNumber}>Add a pokemon to Player1</Button>
+
                     <ul className='pokemonField1'> Player1 pokemons: {player1Pokemon.map((item) => (
 
-                        <li className='pokemonField' key={item.id}><img src={item.bild} alt={item.name} />{item.id}, "Namn: " {item.name},"Hp: " {item.hp},
-                            "Attacks" {item.attacks[0].name}", "" damage: "{item.attacks[0].damage}</li>))}
+                        <li className='pokemonField' key={item.id}><img src={item.bild} alt={item.name} /> <div><div> Namn: {item.name} </div><div>Hp: {item.hp}</div><div>
+                            Attacks: {item.attacks[0].name}</div><div>damage: {item.attacks[0].damage}</div></div></li>))}
                     </ul>
                 </div>
                 <div >
-                    <button value={"player2"} onClick={randomNumber}>Add a pokemon to Player2</button>
+                    <Button variant="contained" value={"player2"} onClick={randomNumber}>Add a pokemon to Player2</Button>
                     <ul className='pokemonField1'> Player2 pokemons: {player2Pokemon.map((item) => (
 
-                        <li className='pokemonField' key={item.id}><img src={item.bild} alt={item.name} />{item.id}, "Namn: " {item.name},"Hp: " {item.hp},
-                            "Attacks" {item.attacks[0].name}", "" damage: "{item.attacks[0].damage}</li>))}
+                        <li className='pokemonField' key={item.id}><img src={item.bild} alt={item.name} /> <div><div> Namn: {item.name} </div><div>Hp: {item.hp}</div><div>
+                            Attacks: {item.attacks[0].name}</div><div>damage: {item.attacks[0].damage}</div></div></li>))}
                     </ul>
                 </div>
-            </div>
-        </div>
+            </div> <h3>{pokemonListLoaded}</h3>
+        </div >
     );
 }
 

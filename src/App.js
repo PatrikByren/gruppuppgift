@@ -144,28 +144,28 @@ function App() {
               setPlayer1PokemonFilter={setPlayer1PokemonFilter} setPlayer2PokemonFilter={setPlayer2PokemonFilter} />} />
           </Routes>
         </main>
-        <footer class="bg-primary text-white">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-4">
+        <footer classname="bg-primary text-white">
+          <div classname="container">
+            <div classname="row">
+              <div classname="col-md-4">
                 <h4>Contact Us</h4>
                 <p>123 Main Street</p>
                 <p>Stockholm, Sweden</p>
                 <p>555-555-5555</p>
                 <p>pokemon@example.com</p>
               </div>
-              <div class="col-md-4">
+              <div classname="col-md-4">
                 <h4>Follow Us</h4>
                 <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
                 <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
                 <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
               </div>
-              <div class="col-md-4">
+              <div classname="col-md-4">
                 <h4>About Us</h4>
                 <p>We are a team of Pokémon the <strong> Awesome Bandits </strong> enthusiasts dedicated to bringing you the latest news, information, and resources about your favorite Pokémon.</p>
               </div>
             </div>
-            <div class="text-center">
+            <div classname="text-center">
               <p>&copy; 2020 Pokémon</p>
             </div>
           </div>
