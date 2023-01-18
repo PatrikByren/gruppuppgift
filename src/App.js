@@ -78,6 +78,10 @@ function App() {
     }
   }
 
+  const resetPokemonList = () => {
+    setPlayer1PokemonFilter([...player1Pokemon])
+    setPlayer2PokemonFilter([...player2Pokemon])
+  }
   const addPokemonToPlayerHandler = () => {
     switch (choosenPlayer) {
       case 'player1':
@@ -120,7 +124,7 @@ function App() {
           <Link to="/">HomePage     </Link>
           <Link to="/page1">Trainee   </Link>
           <Link to="/page2">Samla kort   </Link>
-          <Link to="/page3">Duellera</Link>
+          <Link to="/page3" onClick={resetPokemonList} >Duellera</Link>
         </nav>
         <main>
           <Routes>
@@ -135,33 +139,33 @@ function App() {
               player2Pokemon={player2Pokemon}
               pokemonListLoaded={pokemonListLoaded}
             />} />
-            <Route path='/page3' element={< Page3 player1Pokemon={player1Pokemon} player2Pokemon={player2Pokemon}
+            <Route path='/page3' element={< Page3 playerProfile={playerProfile} player1Pokemon={player1Pokemon} player2Pokemon={player2Pokemon}
               player1PokemonFilter={player1PokemonFilter} player2PokemonFilter={player2PokemonFilter}
               setPlayer1PokemonFilter={setPlayer1PokemonFilter} setPlayer2PokemonFilter={setPlayer2PokemonFilter} />} />
           </Routes>
         </main>
-        <footer class="bg-primary text-white">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-4">
+        <footer className="bg-primary text-white">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-4">
                 <h4>Contact Us</h4>
                 <p>123 Main Street</p>
                 <p>Stockholm, Sweden</p>
                 <p>555-555-5555</p>
                 <p>pokemon@example.com</p>
               </div>
-              <div class="col-md-4">
+              <div className="col-md-4">
                 <h4>Follow Us</h4>
-                <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
-                <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
-                <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="#"><i className="fab fa-twitter"></i> Twitter</a>
+                <a href="#"><i className="fab fa-facebook-f"></i> Facebook</a>
+                <a href="#"><i className="fab fa-instagram"></i> Instagram</a>
               </div>
-              <div class="col-md-4">
+              <div className="col-md-4">
                 <h4>About Us</h4>
                 <p>We are a team of Pokémon the <strong> Awesome Bandits </strong> enthusiasts dedicated to bringing you the latest news, information, and resources about your favorite Pokémon.</p>
               </div>
             </div>
-            <div class="text-center">
+            <div className="text-center">
               <p>&copy; 2020 Pokémon</p>
             </div>
           </div>
@@ -170,7 +174,7 @@ function App() {
       </div>
 
 
-    </BrowserRouter>
+    </BrowserRouter >
   );
 }
 
