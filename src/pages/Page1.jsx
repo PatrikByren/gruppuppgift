@@ -76,8 +76,8 @@ const Page1 = ({ playerProfile, setPlayerProfile }) => {
                     </FormControl>
                 </div>
                 <div className='picplayer'>
-                    <img className='fpic' src="./images/femaleprofile.jpg" alt="" />
-                    <img className='mpic' src="./images/maleprofile.jpg" alt="" />
+                    <img className='fpic' src="./images/femaleprofile.png" alt="" />
+                    <img className='mpic' src="./images/maleprofile.png" alt="" />
                 </div>
                 <div className='ageplayer'>
                     <Box sx={{ minWidth: 120 }}>
