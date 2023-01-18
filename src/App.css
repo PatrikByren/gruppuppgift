@@ -1,6 +1,5 @@
-*{
-  color: #fff;
-}
+
+
 .App {
   text-align: center;
   display: flex;
@@ -20,6 +19,7 @@
  display: flex;
  justify-content: space-evenly;
  flex: 10%;
+ 
 }
 .App nav a{
   display: block;
@@ -39,17 +39,25 @@
 
 .App header {
   flex-grow: 20%;
+  color: whitesmoke;
+}
+.App h1 {
+  color: whitesmoke;
 }
 
 img{
   width: 5rem;
 }
 .playersAndPokemonRoot{
-  
+  color: whitesmoke;
   display: flex;
+}
+.white{
+  color: whitesmoke;
 }
 li{
   list-style: none;
+  color: whitesmoke;
   
 }
 li div {
@@ -116,11 +124,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+    
 }
 
 main {
@@ -129,6 +139,7 @@ main {
   min-width: 100%;
   max-width: 100%;
   background-position: center;
+  
 }
 
 .border{
@@ -175,3 +186,4 @@ main {
   height: 250px;
   width: 130px;
 }
+

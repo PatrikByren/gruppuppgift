@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 
-const DuellPokemonChoose = ({ setPlayer1ChoosenPok, setPlayer2ChoosenPok, player1PokemonFilter, player2PokemonFilter }) => {
+const DuellPokemonChoose = ({ playerProfile, setPlayer1ChoosenPok, setPlayer2ChoosenPok, player1PokemonFilter, player2PokemonFilter }) => {
 
     const player1PokemonHandler = (e) => {
         console.log(e.target.value)
@@ -24,7 +24,7 @@ const DuellPokemonChoose = ({ setPlayer1ChoosenPok, setPlayer2ChoosenPok, player
         <div className='playersAndPokemonRoot'>
             <div>
 
-                <ul className='pokemonField1'> Player1 pokemons: {player1PokemonFilter.map((item) => (
+                <ul className='pokemonField1'> {playerProfile[0]?.name}'s pokemons: {player1PokemonFilter.map((item) => (
 
                     <div key={item.id} className='pokemonField1'><div><li className='pokemonField' key={item.id}><img src={item.bild} alt={item.name} /> <div><div> Namn: {item.name} </div><div>Hp: {item.hp}</div><div>
                         Attacks: {item.attacks[0].name}</div><div>damage: {item.attacks[0].damage}</div></div>
@@ -33,7 +33,7 @@ const DuellPokemonChoose = ({ setPlayer1ChoosenPok, setPlayer2ChoosenPok, player
             </div>
             <div>
 
-                <ul className='pokemonField1'> Player2 pokemons: {player2PokemonFilter.map((item) => (
+                <ul className='pokemonField1'> {playerProfile[1]?.name}'s pokemons: {player2PokemonFilter.map((item) => (
 
                     <div key={item.id} className='pokemonField1'><div><li className='pokemonField' key={item.id}><img src={item.bild} alt={item.name} /> <div><div> Namn: {item.name} </div><div>Hp: {item.hp}</div><div>
                         Attacks: {item.attacks[0].name}</div><div>damage: {item.attacks[0].damage}</div></div>

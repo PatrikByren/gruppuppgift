@@ -37,7 +37,7 @@ const Page1 = ({ playerProfile, setPlayerProfile }) => {
     };
     //When click the button create profile: 
     const createPlayerHandler = () => {
-        setPlayerProfile([...playerProfile, { name: name, gender: gender, age: age }]) //Skapa player
+        setPlayerProfile([...playerProfile, { name: name, gender: gender, age: age, wins: 0, lose: 0, draw: 0 }]) //Skapa player
         setName("") // Återställa fältet
 
     }
