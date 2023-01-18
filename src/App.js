@@ -144,32 +144,37 @@ function App() {
               setPlayer1PokemonFilter={setPlayer1PokemonFilter} setPlayer2PokemonFilter={setPlayer2PokemonFilter} />} />
           </Routes>
         </main>
+
+
+
+
         <footer className="bg-primary text-white">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-4">
+          
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between">
+            <div className="col-md-4">
                 <h4>Contact Us</h4>
-                <p>123 Main Street</p>
-                <p>Stockholm, Sweden</p>
-                <p>555-555-5555</p>
-                <p>pokemon@example.com</p>
-              </div>
-              <div className="col-md-4">
+                <p>123 Main Street.  Stockholm, Sweden. Phone 555-555-5555. Email: pokemon@example.com</p>
+            </div>
+
+            <div className="col-md-4">
                 <h4>Follow Us</h4>
                 <a href="#"><i className="fab fa-twitter"></i> Twitter</a>
                 <a href="#"><i className="fab fa-facebook-f"></i> Facebook</a>
                 <a href="#"><i className="fab fa-instagram"></i> Instagram</a>
-              </div>
-              <div className="col-md-4">
+            </div>
+            <div className="col-md-4">
                 <h4>About Us</h4>
                 <p>We are a team of Pokémon the <strong> Awesome Bandits </strong> enthusiasts dedicated to bringing you the latest news, information, and resources about your favorite Pokémon.</p>
-              </div>
             </div>
-            <div className="text-center">
-              <p>&copy; 2020 Pokémon</p>
-            </div>
-          </div>
-        </footer>
+        </div>
+        <div className="text-center">
+            <p>&copy; 2020 Pokémon</p>
+        </div>
+    </div>
+   
+</footer>
+
 
       </div>
 
@@ -180,6 +185,8 @@ function App() {
 
 export default App;
 
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /*const fetchImage = async (number) => {
   const res = await fetch(`https://assets.tcgdex.net/en/base/basep/${number}/high.png`);
