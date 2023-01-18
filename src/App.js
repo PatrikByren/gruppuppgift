@@ -55,10 +55,10 @@ function App() {
   const checkDublicatesArray = () => {
     setPlayer1PokemonFilter(player1PokemonFilter.filter((item,index)=> (index === player1PokemonFilter.findIndex(o=> item.id === o.id))))
     setPlayer2PokemonFilter(player2PokemonFilter.filter((item,index)=> (index === player2PokemonFilter.findIndex(o=> item.id === o.id)))) 
-    //setPlayer1Pokemon(player1Pokemon.filter((item,index)=> (index === player1Pokemon.findIndex(o=> item.id === o.id))))
-    //setPlayer2Pokemon(player2Pokemon.filter((item,index)=> (index === player2Pokemon.findIndex(o=> item.id === o.id)))) 
-
   }
+ 
+
+
   const aNumber = () => {
     if (fetchNumber < 53) {
       setFetchNumber(fetchNumber + 1)
@@ -90,6 +90,7 @@ function App() {
   const resetPokemonList = () => {
     setPlayer1PokemonFilter([...player1Pokemon])
     setPlayer2PokemonFilter([...player2Pokemon])
+    checkDublicatesArray()
   }
   const addPokemonToPlayerHandler = async () => {
     switch (choosenPlayer) {
@@ -134,9 +135,9 @@ function App() {
         <header><h1>POKEMON WORLD</h1></header>
         <nav>
           <Link to="/">HomePage     </Link>
-          <Link to="/page1">Trainee   </Link>
-          <Link to="/page2">Samla kort   </Link>
-          <Link to="/page3" onClick={resetPokemonList} >Duellera</Link>
+          <Link to="/page1">Trainer   </Link>
+          <Link to="/page2">Collect cards   </Link>
+          <Link to="/page3" onClick={resetPokemonList} >Duells</Link>
         </nav>
         <main>
           <Routes>

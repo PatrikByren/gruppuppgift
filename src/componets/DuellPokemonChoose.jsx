@@ -11,13 +11,6 @@ const DuellPokemonChoose = ({ playerProfile, setPlayer1ChoosenPok, setPlayer2Cho
         console.log(e.target.value)
         setPlayer2ChoosenPok(e.target.value)
     }
-    /*const startDuell = () => {
-        setPlayer1PokemonFilter(player1PokemonFilter.filter((item) => item.id === player1ChoosenPok));
-        setPlayer2PokemonFilter(player2PokemonFilter.filter((item) => item.id === player2ChoosenPok));
-
-
-
-    }*/
 
     return (
 
