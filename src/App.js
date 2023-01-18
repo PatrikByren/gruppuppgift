@@ -7,6 +7,7 @@ import Page1 from './pages/Page1';
 import Page2 from './pages/Page2';
 import Page3 from './pages/Page3';
 import { ListItemSecondaryAction } from '@mui/material';
+import IndeterminateCheckBoxOutlined from '@mui/icons-material/IndeterminateCheckBoxOutlined';
 
 
 
@@ -50,6 +51,14 @@ function App() {
   }
 
   //FUNCTIONS
+
+  const checkDublicatesArray = () => {
+    setPlayer1PokemonFilter(player1PokemonFilter.filter((item,index)=> (index === player1PokemonFilter.findIndex(o=> item.id === o.id))))
+    setPlayer2PokemonFilter(player2PokemonFilter.filter((item,index)=> (index === player2PokemonFilter.findIndex(o=> item.id === o.id)))) 
+    //setPlayer1Pokemon(player1Pokemon.filter((item,index)=> (index === player1Pokemon.findIndex(o=> item.id === o.id))))
+    //setPlayer2Pokemon(player2Pokemon.filter((item,index)=> (index === player2Pokemon.findIndex(o=> item.id === o.id)))) 
+
+  }
   const aNumber = () => {
     if (fetchNumber < 53) {
       setFetchNumber(fetchNumber + 1)
@@ -82,7 +91,7 @@ function App() {
     setPlayer1PokemonFilter([...player1Pokemon])
     setPlayer2PokemonFilter([...player2Pokemon])
   }
-  const addPokemonToPlayerHandler = () => {
+  const addPokemonToPlayerHandler = async () => {
     switch (choosenPlayer) {
       case 'player1':
         setPlayer1Pokemon([...player1Pokemon, filterPokemonList[randomNumber]])
@@ -92,14 +101,17 @@ function App() {
         setPlayer2Pokemon([...player2Pokemon, filterPokemonList[randomNumber]])
         setPlayer2PokemonFilter([...player2PokemonFilter, filterPokemonList[randomNumber]])
         break;
-      default: console.log(choosenPlayer)
+      default: 
         break;
     }
+    
   }
 
 
   //USEEFFECTS
-
+  useEffect(()=>{
+    checkDublicatesArray();
+  },[player1Pokemon, player2Pokemon])  
 
   useEffect(() => {
     if (fetchNumber != 0) { fetchPokemonAttributs(); fetchImage(); }
@@ -135,8 +147,8 @@ function App() {
             <Route path='/page2' element={< Page2 setRandomNumber={setRandomNumber} filterPokemonList={filterPokemonList}
               pokemonList={pokemonList} setFilterPokemonList={setFilterPokemonList} choosenPlayer={choosenPlayer}
               setChoosenPlayer={setChoosenPlayer}
-              player1Pokemon={player1Pokemon}
-              player2Pokemon={player2Pokemon}
+              player1PokemonFilter={player1PokemonFilter}
+              player2PokemonFilter={player2PokemonFilter}
               pokemonListLoaded={pokemonListLoaded}
             />} />
             <Route path='/page3' element={< Page3 playerProfile={playerProfile} player1Pokemon={player1Pokemon} player2Pokemon={player2Pokemon}

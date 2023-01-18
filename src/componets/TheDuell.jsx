@@ -21,25 +21,19 @@ const TheDuell = ({ player1Name, setPlayer1Name, player2Name, setPlayer2Name, pl
 
         let newTwoDmg = (twoDmg + "k").slice(0, 2);
         let newOneDmg = (oneDmg + "k").slice(0, 2);
-        console.log("dmg1:" + newOneDmg)
-        console.log("dmg2:" + newTwoDmg)
+
         if (newOneDmg == "k") { newOneDmg = 10; }
         if (newTwoDmg == "k") { newTwoDmg = 10; }
-        console.log(duellPokemon1)
-        console.log(duellPokemon2)
+
         setPlayer1PokemonFilter([])
         setPlayer2PokemonFilter([])
-        console.log("dmg1:" + newOneDmg)
-        console.log("dmg2:" + newTwoDmg)
-        setPlayer1Name(playerProfile[0]?.name)
-        setPlayer2Name(playerProfile[1]?.name)
+
+        //setPlayer1Name(playerProfile[0]?.name)
+        //setPlayer2Name(playerProfile[1]?.name)
         do {
-            console.log("hp1:" + oneHp)
-            console.log("hp2:" + twoHp)
+
             oneHp -= newTwoDmg;
             twoHp -= newOneDmg;
-            console.log("dmg1:" + newOneDmg)
-            console.log("dmg2:" + newTwoDmg)
             oneHp--;
             twoHp--;
             console.log(player1Name)
