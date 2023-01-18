@@ -120,9 +120,6 @@ flex-direction: column;
 
 
 
-
-
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -153,7 +150,6 @@ main {
   background-position: center;
   display: flex;
   flex-direction: column;
-  
   width: 35%;
   min-height: 600px;
   text-align: center;
@@ -163,12 +159,14 @@ main {
 }
 
 .picplayer{
+  max-width: 100%;
+  height: auto;
   margin-top: 20px;
   justify-content: space-around;
 }
 
 .ageplayer{
-  margin-left: 170px;
+  padding-left: 170px;
   width: 200px;
   padding-top: 40px;
 }
@@ -212,4 +210,3 @@ margin: 0;
   font-size: smaller;
 }
 }
-
