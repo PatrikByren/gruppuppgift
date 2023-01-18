@@ -21,6 +21,7 @@
  display: flex;
  justify-content: space-evenly;
  flex: 10%;
+ overflow: hidden;
  
 }
 .App nav a{
@@ -81,12 +82,14 @@ display: flex;
 .pokemonField{
   display: flex;
   flex-direction: rows;
-  background-color: aliceblue;
+  background-image: url(https://fr.readkong.com/static/f2/f5/f2f52481f060d2b87f3f090d448a1ad7/betail-viande-poisson-8376609-2.jpg);
+  background-position: center;
+  border-radius: 1rem;
   margin: 2rem;
 }
 .pokemonField div{
   text-align: left;
-  margin-left: 2rem;
+  margin-left: 1rem;
 }
 
 
@@ -113,9 +116,6 @@ footer a {
   display: flex;
 flex-direction: column;
 }
-
-
-
 
 
 
@@ -190,12 +190,22 @@ main {
   width: 130px;
 }
 
-@media screen and (max-widht: 600px)
-{
-  .createbtn{
-    position: relative;
-    margin-top: 20%;
-  }
 
+@media screen and (max-width: 1000px)
+{ .pokemonField{
+  margin: 0.5rem;
+  font-size: smaller;
+}
+.pokemonField div{
+  margin: 0.1rem;
+}
+.pokemonField1{
+margin: 0;
+}
+}
+@media screen and (max-width: 1100px)
+{ .pokemonField{
   
+  font-size: smaller;
+}
 }
