@@ -1,6 +1,5 @@
 
 import React from 'react';
-import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
 
@@ -31,7 +30,7 @@ const page2 = ({ pokemonListLoaded, setRandomNumber, filterPokemonList, setFilte
                             Attacks: {item.attacks[0].name}</div><div>damage: {item.attacks[0].damage}</div></div></li>))}
                     </ul>
                 </div>
-            </div> <h3>{pokemonListLoaded}</h3>
+            </div> <h3 className='white'>{pokemonListLoaded}</h3>
         </div >
     );
 }
